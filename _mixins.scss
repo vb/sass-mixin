@@ -1,0 +1,117 @@
+/*
+  Funktion som räknar ut ett relativt mått (em) utifrån absoluta parametrar (px).
+  Tar emot två parametrar: Önskat värde samt kontextuellt värde/teckengrad (standard är $basefont)
+
+  Exempelanvädning:
+  h1{
+    @include font-size(40);
+    margin-bottom: em(20, 40);
+  }
+*/
+@function em($target, $context: $basefont){
+  @return ($target/$context)+0em;
+}
+
+@mixin inline-block {
+  display :inline-block;
+  zoom :1;
+  *display :inline;
+  vertical-align :top;
+  margin :0px;
+  padding :0px;
+}
+
+/*
+  Mixin för att rensa flytande element. Använd på förälderelement.
+  Exempelanvändning:
+  .news-section{
+    @include clearfix();
+  }
+*/
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/*
+  Mixin för font storlek. Använder rem med px som fallback
+
+  Exempelanvädning:
+  h1{
+    @include font-size(48);
+  }
+*/
+$basefont: 16;
+@mixin font-size($size: $basefont ){
+  font-size: $size + px;
+  font-size: ( $size / $basefont ) + rem;
+}
+
+/*
+  Mixin för radavstånd / kägel. Använder rem med px som fallback
+
+  Exempelanvädning:
+  p{
+    @include line-height(20);
+  }
+*/
+@mixin line-height($size: $basefont ){
+  line-height: $size + px;
+  line-height: ( $size / $basefont ) + rem;
+}
+
+/*
+  Mixin för teckenmellanrum / kerning. Använder rem med px som fallback
+
+  Exempelanvädning:
+  p{
+    @include font-spacing(1.5);
+  }
+*/
+@mixin font-spacing($size: 1 ){
+  letter-spacing: $size + px;
+  letter-spacing: ( $size / $basefont ) + rem;
+}
+
+/*
+  Mixin för länkfärg. Samtliga tillstånd får parametervärdet
+
+  Exempelanvädning:
+  @include link-color(#333);
+*/
+@mixin link-color($color: #000 ) {
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      color: $color;
+    }
+  }
+}
+
+/*
+  Media queries
+
+  Exempelanvädning:
+  @include max(768){
+    color: red;
+  }
+*/
+@mixin max($bp, $device: 'screen'){
+  @media only #{$device} and (max-width: #{$bp}px){@content;}
+}
+
+@mixin min($bp, $device: 'screen'){
+  @media only #{$device} and (min-width: #{$bp}px){@content;}
+}
