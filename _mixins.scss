@@ -1,5 +1,5 @@
 /*
-  Exempelanvädning:
+  Usage:
   h1{
     @include font-size(40);
     margin-bottom: em(20, 40);
@@ -19,8 +19,7 @@
 }
 
 /*
-  Mixin för att rensa flytande element. Använd på förälderelement.
-  Exempelanvändning:
+  Usage:
   .news-section{
     @include clearfix();
   }
@@ -39,9 +38,7 @@
 }
 
 /*
-  Mixin för font storlek. Använder rem med px som fallback
-
-  Exempelanvädning:
+  Usage:
   h1{
     @include font-size(48);
   }
@@ -53,9 +50,7 @@ $basefont: 16;
 }
 
 /*
-  Mixin för radavstånd / kägel. Använder rem med px som fallback
-
-  Exempelanvädning:
+  Usage:
   p{
     @include line-height(20);
   }
@@ -66,9 +61,7 @@ $basefont: 16;
 }
 
 /*
-  Mixin för teckenmellanrum / kerning. Använder rem med px som fallback
-
-  Exempelanvädning:
+  Usage:
   p{
     @include font-spacing(1.5);
   }
@@ -79,9 +72,7 @@ $basefont: 16;
 }
 
 /*
-  Mixin för länkfärg. Samtliga tillstånd får parametervärdet
-
-  Exempelanvädning:
+  Usage:
   @include link-color(#333);
 */
 @mixin link-color($color: #000 ) {
@@ -98,9 +89,7 @@ $basefont: 16;
 }
 
 /*
-  Media queries
-
-  Exempelanvädning:
+  Usage:
   @include max(768){
     color: red;
   }
