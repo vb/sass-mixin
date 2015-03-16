@@ -1,7 +1,4 @@
 /*
-  Funktion som räknar ut ett relativt mått (em) utifrån absoluta parametrar (px).
-  Tar emot två parametrar: Önskat värde samt kontextuellt värde/teckengrad (standard är $basefont)
-
   Exempelanvädning:
   h1{
     @include font-size(40);
